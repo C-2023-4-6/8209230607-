@@ -1,33 +1,37 @@
 #include <iostream>
 using namespace std;
 int indexOf(const char s1[], const char s2[]) {
-    int b = -1;
-    int len1 = strlen(s1);
-    int len2 = strlen(s2);
-
-    for (int i = 0; i <= len2 - len1; i++) {
-        int a = 0;
-        for (int j = 0; j < len1; j++) {
-            if (s1[ j] != s2[j+i]) {
-                a = -1;
-                break;
+    int i = 0;  
+    int j = 0;  
+    while (s2[j] != '\0') {
+        if (s1[i] == s2[j]) {  
+            i++;
+            j++;
+            if (s1[i] == '\0') {  
+                return j - i;
             }
         }
-        if (a == 0) {
-            b = i;
-            break;
+        else {
+            i = 0;  
+            j++;
         }
     }
-    return b;
+    return -1; 
 }
-
 int main() {
-    char char1[] = "welcome";
-    char char2[] = "We welcome you!";
-    char char3[] = "We invite you!";
-
-    cout << indexOf(char1, char2) << "\n";
-    cout << indexOf(char1, char3) << "\n";
-
+    const int MAX_SIZE = 100;
+    char s1[MAX_SIZE];
+    char s2[MAX_SIZE];
+    cout << "请输入字符串 s1：" << endl;
+    cin.getline(s1, MAX_SIZE);
+    cout << "请输入字符串 s2：" << endl;
+    cin.getline(s2, MAX_SIZE);
+    int index = indexOf(s1, s2);
+    if (index != -1) {
+        cout << "s1 是 s2 的子串，起始下标为 " << index << endl;
+    }
+    else {
+        cout << "s1 不是 s2 的子串" << endl;
+    }
     return 0;
 }
