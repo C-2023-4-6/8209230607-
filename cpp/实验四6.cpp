@@ -22,7 +22,7 @@ void count(const char s[], int counts[]) {
         }
     }
 
-    for (int i = 0; i < 26; i++) {
+    for (int i = 1; i < 26; i++) {
         if (counts[i] != 0)
             cout << char(i + 97) << ":" << counts[i] << "\n";
     }
