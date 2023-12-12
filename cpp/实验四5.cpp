@@ -31,7 +31,7 @@ int main() {
         cout << "s1 是 s2 的子串，起始下标为 " << index << endl;
     }
     else {
-        cout << "s1 不是 s2 的子串" << endl;
+        cout << "s1 不是 s2 的子串" <<"-1"<< endl;
     }
     return 0;
 }
