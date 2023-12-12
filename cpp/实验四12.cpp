@@ -1,39 +1,28 @@
-#include<iostream>
+#include <iostream>
+#include <cstring>
 using namespace std;
+
 int parseHex(const char* const hexString) {
-	int a = strlen(hexString);
-	int b[100] = {};
-	int c=0;
-	for (int i = 0;i < a;i++) {
-		if (hexString[i] == 'A')
-			b[i] = 10;
-		if (hexString[i] == 'B')
-			b[i] = 11;
-		if (hexString[i] == 'C')
-			b[i] = 12;
-		if (hexString[i] == 'D')
-			b[i] = 13;
-		if (hexString[i] == 'E')
-			b[i] = 14;
-		if (hexString[i] == 'F')
-			b[i] = 15;
-	}
-	for (int i = 0;i < a;i++) {
-		int d = 1;
-		for (int j = 0;j < i;j++) {
-			d *= 16;
-		}
-		c += b[i] * d;
-	}
-
-	return 0;
+    int len = strlen(hexString);
+    int result = 0;
+    for (int i = 0; i < len; i++) {
+        int digitValue = 0;
+        if (hexString[i] >= '0' && hexString[i] <= '9') {
+            digitValue = hexString[i] - '0';
+        }
+        else if (hexString[i] >= 'A' && hexString[i] <= 'F') {
+            digitValue = hexString[i] - 'A' + 10;
+        }
+        result = result * 16 + digitValue;
+    }
+    return result;
 }
+
 int main() {
-	char s [100] = {};
-	cin >> s;
-	parseHex(s);
-
-
-
-	return 0;
+    char s[100];
+    cout << "请输入十六进制字符串：";
+    cin.getline(s, 100);
+    int decimalValue = parseHex(s);
+    cout << "转换后的十进制值为：" << decimalValue << endl;
+    return 0;
 }
