@@ -1,27 +1,27 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 int lijun1(int a, int b) {
-	int i = a + b;
-	for (i;;i--) {
-		if ((a % i) == (b % i) == 0)
-			break;
-	}
-	return i;
+    for (int i = a; i > 0; i--) {
+        if ((a % i == 0) && (b % i == 0)) {
+            return i;
+        }
+    }
 }
+
 int lijun2(int a, int b) {
-	int i = 0;
-	for (i;;i++) {
-		if ((i%a) == (i%b) == 0)
-			break;
-	}
-	return i;
+    for (int i = 1; ; i++) {
+        if ((i % a == 0) && (i % b == 0)) {
+            return i;
+        }
+    }
 }
+
 int main() {
-	int m, n;
-	cin >> m >> n;
-	cout << "×î´ó¹«Ô¼Êý£º" << lijun1(m, n);
-	cout << "×îÐ¡¹«±¶Êý£º" << lijun2(m, n);
+    int m, n;
+    cin >> m >> n;
+    cout << "æœ€å¤§å…¬çº¦æ•°ï¼š" << lijun1(m, n) << endl;
+    cout << "æœ€å°å…¬å€æ•°ï¼š" << lijun2(m, n) << endl;
 
-
-	return 0;
+    return 0;
 }
