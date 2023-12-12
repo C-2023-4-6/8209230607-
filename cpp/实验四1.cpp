@@ -1,26 +1,24 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 int main() {
-	int lijun[10] = {};
-	for (int i = 0;i <= 9;i++)
-		cin >> lijun[i];
-	int a[10] = {};
-	int b = 0;
-	for (int i = 0;i <= 9;i++) {
-		bool x = 0;
-		for (int j = i - 1;j >= 0;j--) {
-			if (lijun[j] == lijun[i])
-				x = 1;
-			break;
-		}
-			if(!x){
-				a[b] = lijun[i];
-			b += 1;
-		      }
-	    
+    int lijun[10] = {};
+    for (int i = 0; i <= 9; i++) {
+        cin >> lijun[i];
     }
-	for (int i = 0;i < b;i++) {
-		cout << a[i] << "\t";
-	}
-	return 0;
+    
+    for (int i = 0; i < 10; i++) {
+        bool isDuplicate = false;
+        for (int j = i - 1; j >= 0; j--) {
+            if (lijun[j] == lijun[i]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (!isDuplicate) {
+            cout << lijun[i] << "\t";
+        }
+    }
+    
+    return 0;
 }
